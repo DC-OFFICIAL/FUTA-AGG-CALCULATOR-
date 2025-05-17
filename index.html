@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUTA Aggregate Score Calculator</title>
+    <style>
+        :root {
+            --primary: #003366;
+            --primary-light: #004080;
+            --accent: #e6f2ff;
+            --text: #333;
+            --light-bg: #f5f5f5;
+            --white: #ffffff;
+            --whatsapp: #25D366;
+            --whatsapp-hover: #128C7E;
+            --group: #075E54;
+            --group-hover: #054D44;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light-bg);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 2rem;
+        }
+        
+        .branding {
+            text-align: center;
+            color: var(--primary-light);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        
+        .disclaimer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .calculator-container {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent);
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .total-score {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 0;
+            color: var(--primary);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .action-buttons a {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .whatsapp-btn {
+            background-color: var(--whatsapp);
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: var(--whatsapp-hover);
+        }
+        
+        .group-btn {
+            background-color: var(--group);
+        }
+        
+        .group-btn:hover {
+            background-color: var(--group-hover);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FUTA AGGREGATE CALCULATOR</h1>
+        <div class="branding">Brought to you by DC OFFICIAL</div>
+        <div class="disclaimer">This does not guarantee admission but helps determine your screening score</div>
+        
+        <div class="calculator-container">
+            <div class="form-group">
+                <label for="jamb-score">JAMB Score (out of 400):</label>
+                <input type="number" id="jamb-score" min="0" max="400" placeholder="Enter your JAMB score">
+            </div>
+            
+            <div class="form-group">
+                <label>O'Level Subjects (Select grades for 5 core subjects):</label>
+                
+                <div class="form-group">
+                    <label for="maths">Mathematics:</label>
+                    <select id="maths">
+                        <option value="80">A1 (80 points)</option>
+                        <option value="72">B2 (72 points)</option>
+                        <option value="67">B3 (67 points)</option>
+                        <option value="62">C4 (62 points)</option>
+                        <option value="57">C5 (57 points)</option>
+                        <option value="52">C6 (52 points)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="english">English Language:</label>
+                    <select id="english">
+                        <option value="80">A1 (80 points)</option>
+                        <option value="72">B2 (72 points)</option>
+                        <option value="67">B3 (67 points)</option>
+                        <option value="62">C4 (62 points)</option>
+                        <option value="57">C5 (57 points)</option>
+                        <option value="52">C6 (52 points)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject3">Subject 3:</label>
+                    <select id="subject3">
+                        <option value="80">A1 (80 points)</option>
+                        <option value="72">B2 (72 points)</option>
+                        <option value="67">B3 (67 points)</option>
+                        <option value="62">C4 (62 points)</option>
+                        <option value="57">C5 (57 points)</option>
+                        <option value="52">C6 (52 points)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject4">Subject 4:</label>
+                    <select id="subject4">
+                        <option value="80">A1 (80 points)</option>
+                        <option value="72">B2 (72 points)</option>
+                        <option value="67">B3 (67 points)</option>
+                        <option value="62">C4 (62 points)</option>
+                        <option value="57">C5 (57 points)</option>
+                        <option value="52">C6 (52 points)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject5">Subject 5:</label>
+                    <select id="subject5">
+                        <option value="80">A1 (80 points)</option>
+                        <option value="72">B2 (72 points)</option>
+                        <option value="67">B3 (67 points)</option>
+                        <option value="62">C4 (62 points)</option>
+                        <option value="57">C5 (57 points)</option>
+                        <option value="52">C6 (52 points)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button id="calculate-btn">Calculate My Score</button>
+            
+            <div class="result" id="result">
+                <h2>Your FUTA Admission Score</h2>
+                <div class="total-score" id="aggregate-score">0%</div>
+                
+                <div class="breakdown">
+                    <p><strong>JAMB Contribution (75%):</strong> <span id="jamb-contribution">0</span>%</p>
+                    <p><strong>O'Level Contribution (25%):</strong> <span id="olevel-contribution">0</span>%</p>
+                </div>
+                
+                <div class="action-buttons">
+                    <a href="https://wa.me/2347015110605" class="whatsapp-btn" target="_blank">MESSAGE DC</a>
+                    <a href="https://chat.whatsapp.com/Cb5SsfyuMWVJyA28zLbNS4" class="group-btn" target="_blank">JOIN GROUP</a>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© <span id="year"></span> FUTA Aggregate Calculator | Follows official FUTA screening formula</p>
+        </footer>
+    </div>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        document.getElementById('calculate-btn').addEventListener('click', function() {
+            // Get JAMB score
+            const jambScore = parseFloat(document.getElementById('jamb-score').value);
+            
+            // Validate JAMB score
+            if (isNaN(jambScore) || jambScore < 0 || jambScore > 400) {
+                alert('Please enter a valid JAMB score between 0 and 400');
+                return;
+            }
+            
+            // Calculate JAMB contribution (75%)
+            const jambContribution = (jambScore / 400) * 75;
+            
+            // Get O'level grades
+            const maths = parseInt(document.getElementById('maths').value);
+            const english = parseInt(document.getElementById('english').value);
+            const subject3 = parseInt(document.getElementById('subject3').value);
+            const subject4 = parseInt(document.getElementById('subject4').value);
+            const subject5 = parseInt(document.getElementById('subject5').value);
+            
+            // Calculate O'level average and contribution (25%)
+            const olevelAverage = (maths + english + subject3 + subject4 + subject5) / 5;
+            const olevelContribution = (olevelAverage / 100) * 25;
+            
+            // Calculate aggregate score
+            const aggregateScore = jambContribution + olevelContribution;
+            
+            // Display results
+            document.getElementById('jamb-contribution').textContent = jambContribution.toFixed(2);
+            document.getElementById('olevel-contribution').textContent = olevelContribution.toFixed(2);
+            document.getElementById('aggregate-score').textContent = aggregateScore.toFixed(2) + '%';
+            
+            // Show result section
+            document.getElementById('result').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Allow form submission on Enter key
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('calculate-btn').click();
+            }
+        });
+    </script>
+</body>
+</html>
